@@ -8,7 +8,6 @@
         <p>Published At: {{ formatDate(selectedArticle.publishedAt) }}</p>
         <img :src="selectedArticle.urlToImage" alt="Article Image" />
         <p>{{ selectedArticle.content }}</p>
-        <!-- Teks "Selengkapnya Baca disini" -->
         <p>
           Selengkapnya Baca disini: 
           <a :href="selectedArticle.url" target="_blank" rel="noopener noreferrer">Baca disini</a>
@@ -17,7 +16,6 @@
       <div v-else>
         <p>Loading...</p>
       </div>
-      <!-- Tombol Kembali -->
       <button @click="goBack">Kembali</button>
     </div>
   </template>
@@ -30,7 +28,6 @@
       };
     },
     mounted() {
-      // Ambil data artikel dari local storage saat komponen dimuat
       const storedArticle = localStorage.getItem('selectedArticle');
       if (storedArticle) {
         this.selectedArticle = JSON.parse(storedArticle);
@@ -42,7 +39,6 @@
         return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
       },
       goBack() {
-        // Kembali ke halaman sebelumnya
         this.$router.go(-1);
       },
     },
@@ -50,6 +46,5 @@
   </script>
   
   <style>
-  /* Styling sesuai kebutuhan Anda */
   </style>
   
