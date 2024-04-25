@@ -1,6 +1,10 @@
-<!-- NewsDetail.vue -->
 <template>
-    <div>
+  <div>
+    <v-app-bar app color="primary">
+      <v-toolbar-title>Berita Terkini</v-toolbar-title>
+    </v-app-bar>
+
+    <v-container>
       <div v-if="selectedArticle">
         <h2>{{ selectedArticle.title }}</h2>
         <p>{{ selectedArticle.description }}</p>
@@ -17,34 +21,34 @@
         <p>Loading...</p>
       </div>
       <button @click="goBack">Kembali</button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        selectedArticle: null,
-      };
+    </v-container>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      selectedArticle: null,
+    };
+  },
+  mounted() {
+    const storedArticle = localStorage.getItem('selectedArticle');
+    if (storedArticle) {
+      this.selectedArticle = JSON.parse(storedArticle);
+    }
+  },
+  methods: {
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     },
-    mounted() {
-      const storedArticle = localStorage.getItem('selectedArticle');
-      if (storedArticle) {
-        this.selectedArticle = JSON.parse(storedArticle);
-      }
+    goBack() {
+      this.$router.go(-1);
     },
-    methods: {
-      formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      },
-      goBack() {
-        this.$router.go(-1);
-      },
-    },
-  };
-  </script>
-  
-  <style>
-  </style>
-  
+  },
+};
+</script>
+
+<style>
+</style>

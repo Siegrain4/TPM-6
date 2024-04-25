@@ -1,21 +1,29 @@
 <template>
   <div>
-    <h2>Berita Terkini</h2>
-    <div class="loading-container" v-if="loading">
-      <p class="loading-text">Sedang memuat data...</p>
-    </div>
-    <ul v-else>
-      <li v-for="article in articles" :key="article.url" @click="viewDetail(article)">
-        <div class="news-item">
-          <img :src="article.urlToImage" alt="News Image" class="news-image" />
-          <div class="news-details">
-            <span>{{ article.source.name }}</span>
-            <h3>{{ article.title }}</h3>
-            <p>{{ formatDate(article.publishedAt) }}</p>
-          </div>
+    <!-- Header dengan warna biru -->
+    <v-app-bar app color="primary">
+      <v-toolbar-title>Berita Terkini</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container>
+        <div class="loading-container" v-if="loading">
+          <p class="loading-text">Sedang memuat data...</p>
         </div>
-      </li>
-    </ul>
+        <ul v-else>
+          <li v-for="article in articles" :key="article.url" @click="viewDetail(article)">
+            <div class="news-item">
+              <img :src="article.urlToImage" alt="News Image" class="news-image" />
+              <div class="news-details">
+                <span>{{ article.source.name }}</span>
+                <h3>{{ article.title }}</h3>
+                <p>{{ formatDate(article.publishedAt) }}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </v-container>
+    </v-content>
   </div>
 </template>
 
@@ -92,5 +100,4 @@ export default {
 .loading-text {
   font-size: 24px;
 }
-
 </style>
