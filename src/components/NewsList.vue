@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Header dengan warna biru -->
     <v-app-bar app color="primary">
       <v-toolbar-title>Berita Terkini</v-toolbar-title>
     </v-app-bar>

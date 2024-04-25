@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app color="primary">
+    <v-app-bar app color="primary" :elevation="2">
       <v-toolbar-title>Berita Terkini</v-toolbar-title>
     </v-app-bar>
 
